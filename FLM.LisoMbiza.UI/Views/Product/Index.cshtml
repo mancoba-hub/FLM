@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "Product";
+}
+<h1>@ViewData["Title"]</h1>
+
+@model IEnumerable<FLM.LisoMbiza.Product>
+
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
+@if (@ViewData["ErrorMessage"] != null)
+{
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    <label>@ViewBag.Error</label>
+    <div class="alert alert-danger">
+        <p>@ViewBag.ErrorMessage</p>
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <label>ID</label>
+            </th>
+            <th>
+                <label>Name</label>
+            </th>
+            <th>
+                <label>Weighted Item</label>
+            </th>
+            <th>
+                <label>Suggested Selling Price</label>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    <label>@Html.DisplayFor(x => @item.ID)</label>
+                </td>
+                <td>
+                    <label>@Html.DisplayFor(x => @item.Name)</label>
+                </td>
+                <td>
+                    <label>@Html.DisplayFor(x => @item.WeightedItem)</label>
+                </td>
+                <td>
+                    <label>@Html.DisplayFor(x => @item.SuggestedSellingPrice)</label>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-ID="@item.ID">Edit</a>
+                    <a asp-action="Delete" asp-route-ID="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a asp-action="Create">Create New</a>
+    <a asp-action=""> | </a>
+    <a asp-action="XmlExport">Xml Export</a>
+    <a asp-action=""> | </a>
+    <a asp-action="JsonExport">Json Export</a>
+    <a asp-action=""> | </a>
+    <a asp-action="CsvExport">Csv Export</a>
+</p>

@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Product Report";
+}
+<h1>@ViewData["Title"]</h1>
+
+@model IEnumerable<FLM.LisoMbiza.ReportProduct>
+
+<br />
+<p>
+    <h4>As at : @DateTime.Now</h4>
+</p>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <label>Product Id</label>
+            </th>
+            <th>
+                <label>Product Name</label>
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => @item.ProductId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => @item.ProductName)
+            </td>
+            <td>
+            <table>
+                <tbody>
+                    @foreach (var childItem in item.ProductBranches)
+                    {
+                    <tr>
+                        <td></td>
+                        <td>
+                            @Html.DisplayFor(modelItem => @childItem.BranchId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => @childItem.BranchName)
+                        </td>
+                    </tr>                        
+                    }
+                </tbody>
+            </table>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+

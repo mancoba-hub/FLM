@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Branch";
+}
+<h1>@ViewData["Title"]</h1>
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+@model IEnumerable<FLM.LisoMbiza.Branch>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <label>ID</label>
+            </th>
+            <th>
+                <label>Name</label>
+            </th>
+            <th>
+                <label>Telephone Number</label>
+            </th>
+            <th>
+                <label>Open Date</label>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    <label>@Html.DisplayFor(x => @item.ID)</label>
+                </td>
+                <td>
+                    <label>@Html.DisplayFor(x => @item.Name)</label>
+                </td>
+                <td>
+                    <label>@Html.DisplayFor(x => @item.TelephoneNumber)</label>
+                </td>
+                <td>
+                    <label>@Html.DisplayFor(x => @item.OpenDate)</label>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-ID="@item.ID">Edit</a>
+                    <a asp-action="Delete" asp-route-ID="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p>
+    <a asp-action="Create">Create New</a>
+    <a asp-action=""> | </a>
+    <a asp-action="XmlExport">Xml Export</a>
+    <a asp-action=""> | </a>
+    <a asp-action="JsonExport">Json Export</a>
+    <a asp-action=""> | </a>
+    <a asp-action="CsvExport">Csv Export</a>
+</p>

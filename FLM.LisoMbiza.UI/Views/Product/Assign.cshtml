@@ -1,0 +1,65 @@
+﻿@model FLM.LisoMbiza.ProductBranches
+
+@{
+    ViewData["Title"] = "Assign Product to Branches";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <form method="post" class="form-group" asp-controller="Product" asp-action="Assign">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="ID" readonly />
+        <input type="hidden" asp-for="Name" readonly />
+        <input type="hidden" asp-for="@Model.Branches" readonly />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <label>ID</label>
+                    </th>
+                    <th>
+                        <label>Name</label>
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Branches)
+                {
+                    <tr>
+                        <td>
+                            <label asp-for="@item.ID" class="control-label">@item.ID</label>
+                        </td>
+                        <td>
+                            <label asp-for="@item.Name" class="control-label">@item.Name</label>
+                        </td>
+                        <td>
+                            <input asp-for="@item.IsChecked" name="IsChecked" type="checkbox" checked="@item.IsChecked" />
+                        </td>
+                    </tr>
+                }
+
+                @foreach (var temp in Model.Branches.Where(x => x.IsChecked))
+                {
+                    Model.Name = $"{temp.ID},";
+                }
+            </tbody>
+        </table>
+        <div class="form-group">
+            <input type="submit" value="Assign Branch" class="btn btn-primary" />
+            @*asp-route-id="@Model.ID" asp-route-model="@Model" asp-route-Branches="@Model.Branches.All(x => x.IsChecked)"*@
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-action="Assign" asp-route-ID="@Model.ID" asp-route-name="@Model.Name">Assign</a>
+    <a asp-action=""> | </a>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
