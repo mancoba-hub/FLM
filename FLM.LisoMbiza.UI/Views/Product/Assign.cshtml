@@ -1,0 +1,51 @@
+﻿@model FLM.LisoMbiza.ProductBranches
+
+@{
+    ViewData["Title"] = "Assign Product to Branches";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    @using (Html.BeginForm("AssignBranch", "Product", FormMethod.Post, Model))
+    {
+        <div class="modal-body">
+            <table class="table table-condensed table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th><label>ID</label></th>
+                        <th><label>Name</label></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (var i = 0; i < Model.BranchList.Count(); i++)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(x => Model.BranchList[i].ID)</td>
+                            <td>@Html.DisplayFor(x => Model.BranchList[i].Name)</td>
+                            <td>
+                                @Html.CheckBoxFor(j => Model.BranchList[i].IsChecked, new { @class = "check-box", ID = Model.BranchList[i].ID })
+                            </td>
+                        </tr>
+                        @Html.HiddenFor(m => m.BranchList[i].ID)
+                        @Html.HiddenFor(m => m.BranchList[i].Name)
+                        @Html.HiddenFor(m => m.BranchList[i].IsChecked)
+                    }
+                </tbody>
+            </table>
+        </div>
+        @Html.HiddenFor(o => @Model.ID)
+        @Html.HiddenFor(o => @Model.Name)
+        <div class="modal-footer">
+            <input type="submit" class="btn btn-success" name="action" value="Save" />
+        </div>
+    }
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

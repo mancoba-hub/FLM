@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FLM.LisoMbiza.Data\FLM.LisoMbiza.Data.csproj" />
+    <ProjectReference Include="..\FLM.LisoMbiza.Utils\FLM.LisoMbiza.Utils.csproj" />
+  </ItemGroup>
+
+</Project>

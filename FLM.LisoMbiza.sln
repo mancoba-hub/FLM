@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32929.386
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FLM.LisoMbiza.Api", "FLM.LisoMbiza.Api\FLM.LisoMbiza.Api.csproj", "{E7C73756-8DFD-4C43-848B-48CF8662492D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FLM.LisoMbiza.Services", "FLM.LisoMbiza.Services\FLM.LisoMbiza.Services.csproj", "{77C0B107-8CC2-4764-B759-B566CA38877F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FLM.LisoMbiza.Entities", "FLM.LisoMbiza.Entities\FLM.LisoMbiza.Entities.csproj", "{01228AF6-C507-499D-9A1A-1146FB6DC493}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FLM.LisoMbiza.Utils", "FLM.LisoMbiza.Utils\FLM.LisoMbiza.Utils.csproj", "{5FF1931E-A1CE-4987-9777-31AC12829538}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FLM.LisoMbiza.Data", "FLM.LisoMbiza.Data\FLM.LisoMbiza.Data.csproj", "{BCEBF911-BBAB-4950-A3D5-619F8A3F189F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FLM.LisoMbiza.Services.Tests", "FLM.LisoMbiza.Services.Tests\FLM.LisoMbiza.Services.Tests.csproj", "{1B93D05C-717E-4094-9165-55DD8360F3C9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FLM.LisoMbiza.Api.Tests", "FLM.LisoMbiza.Api.Tests\FLM.LisoMbiza.Api.Tests.csproj", "{CF600F2B-F883-4B74-9309-209C26194557}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FLM.LisoMbiza.UI", "FLM.LisoMbiza.UI\FLM.LisoMbiza.UI.csproj", "{21B128A2-932A-455F-A1DA-31AC11E3FE2E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0BA54899-E61D-4CBC-93B6-CE0F08352CCF}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		Requirements\Branch.csv = Requirements\Branch.csv
+		Requirements\Branch.json = Requirements\Branch.json
+		Requirements\Branch.xml = Requirements\Branch.xml
+		Requirements\BranchProduct.csv = Requirements\BranchProduct.csv
+		Requirements\BranchProduct.json = Requirements\BranchProduct.json
+		Requirements\BranchProduct.xml = Requirements\BranchProduct.xml
+		DeleteBinObjFolders.bat = DeleteBinObjFolders.bat
+		Requirements\Product.csv = Requirements\Product.csv
+		Requirements\Product.json = Requirements\Product.json
+		Requirements\Product.xml = Requirements\Product.xml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E7C73756-8DFD-4C43-848B-48CF8662492D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7C73756-8DFD-4C43-848B-48CF8662492D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7C73756-8DFD-4C43-848B-48CF8662492D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7C73756-8DFD-4C43-848B-48CF8662492D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77C0B107-8CC2-4764-B759-B566CA38877F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77C0B107-8CC2-4764-B759-B566CA38877F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77C0B107-8CC2-4764-B759-B566CA38877F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77C0B107-8CC2-4764-B759-B566CA38877F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01228AF6-C507-499D-9A1A-1146FB6DC493}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01228AF6-C507-499D-9A1A-1146FB6DC493}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01228AF6-C507-499D-9A1A-1146FB6DC493}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01228AF6-C507-499D-9A1A-1146FB6DC493}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FF1931E-A1CE-4987-9777-31AC12829538}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FF1931E-A1CE-4987-9777-31AC12829538}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FF1931E-A1CE-4987-9777-31AC12829538}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FF1931E-A1CE-4987-9777-31AC12829538}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCEBF911-BBAB-4950-A3D5-619F8A3F189F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCEBF911-BBAB-4950-A3D5-619F8A3F189F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCEBF911-BBAB-4950-A3D5-619F8A3F189F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCEBF911-BBAB-4950-A3D5-619F8A3F189F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B93D05C-717E-4094-9165-55DD8360F3C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B93D05C-717E-4094-9165-55DD8360F3C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B93D05C-717E-4094-9165-55DD8360F3C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B93D05C-717E-4094-9165-55DD8360F3C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF600F2B-F883-4B74-9309-209C26194557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF600F2B-F883-4B74-9309-209C26194557}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF600F2B-F883-4B74-9309-209C26194557}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF600F2B-F883-4B74-9309-209C26194557}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21B128A2-932A-455F-A1DA-31AC11E3FE2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21B128A2-932A-455F-A1DA-31AC11E3FE2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21B128A2-932A-455F-A1DA-31AC11E3FE2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21B128A2-932A-455F-A1DA-31AC11E3FE2E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {12DCBD07-F487-4E81-9958-BE03B5F22024}
+	EndGlobalSection
+EndGlobal

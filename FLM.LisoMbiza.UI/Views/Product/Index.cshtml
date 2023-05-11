@@ -1,0 +1,122 @@
+﻿@{
+    ViewData["Title"] = "Product";
+}
+<h1>@ViewData["Title"]</h1>
+
+@model IEnumerable<FLM.LisoMbiza.Product>
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+@if (@ViewBag.ErrorMessage != null)
+{
+    <div class="modal fade" tabindex="-1" id="modal3"
+         data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnHideModal" class="btn btn-primary button button4">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts{
+
+        <script type="text/javascript">
+            const modal = document.getElementById("modal3")
+            $(window).on('load', function () {
+                console.log(modal);
+
+                modal.style.display = "block";
+                $("#modal3").find(".modal-header").html('@ViewBag.ErrorMessage');
+                $("#modal3").find(".modal-body").html('@ViewBag.ErrorMessage');
+                $("#modal3").modal('show');
+            });
+            function closeModal() {
+                modal.style.display = "none";
+
+            }
+            $("#btnHideModal").click(function () {
+                $("#modal3").modal('hide');
+            });
+        </script>
+
+    }
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <label>ID</label>
+            </th>
+            <th>
+                <label>Name</label>
+            </th>
+            <th>
+                <label>Weighted Item</label>
+            </th>
+            <th>
+                <label>Suggested Selling Price</label>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    <label>@Html.DisplayFor(x => @item.ID)</label>
+                </td>
+                <td>
+                    <label>@Html.DisplayFor(x => @item.Name)</label>
+                </td>
+                <td>
+                    <label>@Html.DisplayFor(x => @item.WeightedItem)</label>
+                </td>
+                <td>
+                    <label>@Html.DisplayFor(x => @item.SuggestedSellingPrice)</label>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-ID="@item.ID">Edit</a>
+                    <a asp-action="Delete" asp-route-ID="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p>
+    <span id="validationMessage"></span>
+</p>
+<p>
+    <a asp-action="Create">Create New</a>
+    <a asp-action=""> | </a>
+    <a asp-action="XmlExport">Xml Export</a>
+    <a asp-action=""> | </a>
+    <a asp-action="JsonExport">Json Export</a>
+    <a asp-action=""> | </a>
+    <a asp-action="CsvExport">Csv Export</a>
+</p>
