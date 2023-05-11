@@ -6,6 +6,10 @@ namespace FLM.LisoMbiza.UI.Models
     {
         public string RequestId { get; set; }
 
+        public string SourceMessage { get; set; }
+
+        public string ErrorMessage { get; set; }
+
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
     }
 }

@@ -14,7 +14,7 @@ namespace FLM.LisoMbiza
 
         public decimal SuggestedSellingPrice { get; set; }
 
-        public List<BranchProducts> Branches { get; set; }
+        public List<BranchProducts> BranchList { get; set; }
 
         public string ErrorMessage { get; set; }
     }

@@ -135,7 +135,7 @@ namespace FLM.LisoMbiza.UI.Controllers
                     Name = product.Name,
                     WeightedItem = product.WeightedItem,
                     SuggestedSellingPrice = product.SuggestedSellingPrice,
-                    Branches = PopulateProductBranches(branches, listProductBranch)
+                    BranchList = PopulateProductBranches(branches, listProductBranch)
                 };
 
                 return View(ProductBranchList);
@@ -187,7 +187,7 @@ namespace FLM.LisoMbiza.UI.Controllers
 
                     //Update Branch Product
                     List<BranchProduct> branchProducts = new List<BranchProduct>();
-                    foreach (var branchProduct in model.Branches.Where(x => x.IsChecked))
+                    foreach (var branchProduct in model.BranchList.Where(x => x.IsChecked))
                     {
                         branchProducts.Add(new BranchProduct { BranchID = branchProduct.ID, ProductID = model.ID });
                     }
@@ -233,7 +233,7 @@ namespace FLM.LisoMbiza.UI.Controllers
                     Name = product.Name,
                     WeightedItem = product.WeightedItem,
                     SuggestedSellingPrice = product.SuggestedSellingPrice,
-                    Branches = PopulateProductBranches(branches, listProductBranch)
+                    BranchList = PopulateProductBranches(branches, listProductBranch)
                 };
 
                 return View(ProductBranchList);
@@ -246,13 +246,12 @@ namespace FLM.LisoMbiza.UI.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Assign(int id, string name, ProductBranches model)
+        [IgnoreAntiforgeryToken]
+        public ActionResult AssignBranch(ProductBranches model)
         {
             try
             {
-                //int id = model.ID;
-                var mod = HttpContext.Request.Form["Name"];
+                int id = model.ID;
                 ModelState.Remove("ID");
                 if (!ModelState.IsValid)
                 {
@@ -263,7 +262,7 @@ namespace FLM.LisoMbiza.UI.Controllers
                 {
                     //Update Branch Product
                     List<BranchProduct> branchProducts = new List<BranchProduct>();
-                    foreach (var branchProduct in model.Branches.Where(x => x.IsChecked))
+                    foreach (var branchProduct in model.BranchList.Where(x => x.IsChecked))
                     {
                         branchProducts.Add(new BranchProduct { BranchID = branchProduct.ID, ProductID = id });
                     }
@@ -272,7 +271,7 @@ namespace FLM.LisoMbiza.UI.Controllers
                     if (response.IsSuccessStatusCode)
                     {
                         url = $"{_productUrl}assign/";
-                        response = SendObject<List<BranchProduct>>(branchProducts, _httpClient, url, false);
+                        response = SendObject<List<BranchProduct>>(branchProducts, _httpClient, url, true);
                     }
                 }
                 return RedirectToAction(nameof(Index));
@@ -305,11 +304,10 @@ namespace FLM.LisoMbiza.UI.Controllers
                 {
                     if (!result.IsSuccessful)
                     {
-                        ModelState.AddModelError("ErrorMessage", result.ErrorMessage);
                         ViewBag.ErrorMessage = result.ErrorMessage;
-                        ViewBag.Error = result.ErrorMessage;
-                        ViewData["ErrorMessage"] = result.ErrorMessage;
-                        Error();
+                        string sourceMessage = "Product";
+                        Error(result.ErrorMessage, sourceMessage);
+                        return RedirectToAction("Error", sourceMessage, new ErrorViewModel { ErrorMessage = result.ErrorMessage, SourceMessage = sourceMessage });
                     }
                 }
             }
@@ -418,9 +416,9 @@ namespace FLM.LisoMbiza.UI.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Error(string errorMessage, string sourceMessage)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, ErrorMessage = errorMessage, SourceMessage = sourceMessage });
         }
 
         #endregion

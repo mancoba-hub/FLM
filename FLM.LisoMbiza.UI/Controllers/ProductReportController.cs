@@ -194,7 +194,19 @@ namespace FLM.LisoMbiza.UI.Controllers
                     }                    
                 }                
             }
-            return reportProducts;
+            foreach (var product in products)
+            {
+                if (!reportProducts.Any(x => x.ProductId == product.ID))
+                {
+                    reportProducts.Add(new ReportProduct
+                    {
+                        ProductId = product.ID,
+                        ProductName = product.Name,
+                        ProductBranches = new List<ReportBranch>()
+                    });
+                }
+            }
+            return reportProducts.OrderBy(x => x.ProductId).ToList();
         }
 
         #endregion

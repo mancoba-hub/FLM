@@ -172,9 +172,16 @@ namespace FLM.LisoMbiza.UI.Controllers
                 };
                 string url = $"{_branchUrl}delete/?id={id}";
                 var response = SendObject(data, client, url, false);
+                var result = CreateResponseFull<Response>(response.Content);
                 if (response.IsSuccessStatusCode)
                 {
-                    return RedirectToAction(nameof(Index));
+                    if (!result.IsSuccessful)
+                    {
+                        ViewBag.ErrorMessage = result.ErrorMessage;
+                        string sourceMessage = "Branch";
+                        Error(result.ErrorMessage, sourceMessage);
+                        return RedirectToAction("Error", sourceMessage, new ErrorViewModel { ErrorMessage = result.ErrorMessage, SourceMessage = sourceMessage });
+                    }
                 }
             }
             catch (Exception e)
@@ -282,9 +289,9 @@ namespace FLM.LisoMbiza.UI.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Error(string errorMessage, string sourceMessage)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, ErrorMessage = errorMessage, SourceMessage = sourceMessage });
         }
 
         #endregion
@@ -334,6 +341,18 @@ namespace FLM.LisoMbiza.UI.Controllers
         {
             var stringData = response.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
             return JsonConvert.DeserializeObject<Response<T>>(stringData).Data;
+        }
+
+        /// <summary>
+        /// Creates the full response
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="response"></param>
+        /// <returns></returns>
+        private T CreateResponseFull<T>(HttpContent response)
+        {
+            var stringData = response.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+            return JsonConvert.DeserializeObject<T>(stringData);
         }
 
         /// <summary>

@@ -194,7 +194,20 @@ namespace FLM.LisoMbiza.UI.Controllers
                     }                    
                 }                
             }
-            return reportBranches;
+
+            foreach(var branch in branches)
+            {
+                if (!reportBranches.Any(x => x.BranchId == branch.ID))
+                {
+                    reportBranches.Add(new ReportBranch
+                    {
+                        BranchId = branch.ID,
+                        BranchName = branch.Name,
+                        BranchProducts = new List<ReportProduct>()
+                    });
+                }
+            }
+            return reportBranches.OrderBy(x => x.BranchId).ToList();
         }
 
         #endregion
