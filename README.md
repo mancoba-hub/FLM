@@ -26,5 +26,5 @@ This will create the database "LisoFLM" in your SQL Express instance.
 
 #File Export/Download
 1. In the FLM.LisoMbiza.UI, open the "appsettings.json" file.
-2. Update the "BranchDownloadPath" for your exported ".xml" files.
-2. Update the "ProductDownloadPath" for your exported ".xml" files.
+2. Update the "BranchDownloadPath" for your exported ".xml, .csv & .json" files.
+2. Update the "ProductDownloadPath" for your exported ".xml, .csv & .json" files.
