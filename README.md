@@ -19,8 +19,10 @@ This will create the database "LisoFLM" in your SQL Express instance.
 5. Run the solution to apply the database changes to you SQLExpress server
 
 #File Import
-1. Please make use of the SwaggerUI to import your files.
-
+1. Please make use of the SwaggerUI (https://localhost:44327/swagger/index.html) to import your files.
+![image](https://github.com/mancoba-hub/FLM/assets/65565239/b51b01ea-b5c1-4a80-8ac3-8af393698afe)
+![image](https://github.com/mancoba-hub/FLM/assets/65565239/cbb837ee-3180-43db-b7cc-5c43e9f7f26d)
+![image](https://github.com/mancoba-hub/FLM/assets/65565239/5dc8d1d3-d677-4f5e-9e50-71ea2adf0e98)
 
 #File Export/Download
 1. In the FLM.LisoMbiza.UI, open the "appsettings.json" file.
